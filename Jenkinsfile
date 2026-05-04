@@ -26,16 +26,16 @@ pipeline {
         stage('SonarQube analysis') {
             steps {
                 withSonarQubeEnv('sonar-scanner') {
-                    sh "${env.SCANNER_HOME}/bin/sonar-scanner \
+                    sh """${env.SCANNER_HOME}/bin/sonar-scanner \
                         -Dsonar.projectKey=EKART \
                         -Dsonar.projectName=EKART \
-                        -Dsonar.java.binaries=target/classes"
+                        -Dsonar.java.binaries=target/classes"""
                 }
             }
         }
         stage('OWASP Dependency Check') {
             steps {
-                dependencyCheck additionalArguments: "--nvdApiKey=YOUR_NVD_API_KEY_HERE",
+                dependencyCheck additionalArguments: "--nvdApiKey=049c4c7b-568d-4b66-bdab-4f4903bfb003",
                                 odcInstallation: 'DC'
             }
         }
@@ -59,12 +59,12 @@ pipeline {
             }
         }
         stage('Push image to Hub') {
-    steps {
-        script {
-            sh '''
-                echo "sundari@120795" | docker login -u shwetamk --password-stdin
-                docker push shwetamk/ekart:latest
-            '''
+            steps {
+                script {
+                    sh '''
+                        echo "dckr_pat_TZbYBT5zEvDg_JbaQ6uzcYXeV24" | docker login -u shwetamk --password-stdin
+                        docker push shwetamk/ekart:latest
+                    '''
                 }
             }
         }
