@@ -35,7 +35,7 @@ pipeline {
         }
         stage('OWASP Dependency Check') {
             steps {
-                dependencyCheck additionalArguments: "--nvdApiKey=049c4c7b-568d-4b66-bdab-4f4903bfb003",
+                dependencyCheck additionalArguments: "--nvdApiKey=nvd-api-key",
                                 odcInstallation: 'DC'
             }
         }
@@ -62,7 +62,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        echo "dckr_pat_N5d7_nBhIUysaE8wu83dTMjK_pc" | docker login -u shwetamk --password-stdin
+                        echo "password" | docker login -u shwetamk --password-stdin
                         docker push shwetamk/ekart:latest
                     '''
                 }
