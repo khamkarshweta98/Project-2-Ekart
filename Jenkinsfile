@@ -77,7 +77,7 @@ pipeline {
             steps{
                 script{
                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhub-pwd')]) {
-                   sh 'docker login -u shwetamk -p ${dockerhub-pwd}'}
+                   sh 'docker login -u shwetamk -p sundari@120795'}
                    sh 'docker push shwetamk/ekart:latest'
                 }
             }
