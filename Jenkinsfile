@@ -68,7 +68,7 @@ pipeline {
         stage('build and Tag docker image') {
             steps {
                 script {
-                        sh "docker build -t khamkarshweta98/ekart:latest -f docker/Dockerfile ."
+                        sh "docker build -t shwetamk/ekart:latest -f docker/Dockerfile ."
                     }
             }
         }
@@ -77,8 +77,8 @@ pipeline {
             steps{
                 script{
                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                   sh 'docker login -u khamkarshweta98 -p ${dockerhubpwd}'}
-                   sh 'docker push khamkarshweta98/ekart:latest'
+                   sh 'docker login -u shwetamk -p ${dockerhubpwd}'}
+                   sh 'docker push shwetamk/ekart:latest'
                 }
             }
         }
