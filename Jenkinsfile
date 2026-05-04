@@ -59,10 +59,12 @@ pipeline {
             }
         }
         stage('Push image to Hub') {
-            steps {
-                script {
-                    sh 'docker login -u shwetamk -p sundari@120795'
-                    sh 'docker push shwetamk/ekart:latest'
+    steps {
+        script {
+            sh '''
+                echo "sundari@120795" | docker login -u shwetamk --password-stdin
+                docker push shwetamk/ekart:latest
+            '''
                 }
             }
         }
