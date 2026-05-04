@@ -62,7 +62,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        echo "dckr_pat_TZbYBT5zEvDg_JbaQ6uzcYXeV24" | docker login -u shwetamk --password-stdin
+                        echo "dckr_pat_N5d7_nBhIUysaE8wu83dTMjK_pc" | docker login -u shwetamk --password-stdin
                         docker push shwetamk/ekart:latest
                     '''
                 }
